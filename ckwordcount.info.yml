@@ -1,0 +1,9 @@
+name: CKEditor Wordcount
+type: module
+description: "Adds the ability to count words and/or characters to CKEditor."
+package: Other
+core: 8.x
+
+dependencies:
+  - ckeditor
+  - notification
