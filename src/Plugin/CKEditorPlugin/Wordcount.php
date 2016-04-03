@@ -28,7 +28,10 @@ class Wordcount extends CKEditorPluginBase implements CKEditorPluginConfigurable
   public function getDependencies(Editor $editor) {
     return ['notification'];
   }
-  
+
+  /**
+   * {@inheritdoc}
+   */
   public function getButtons() {
     return [];
   }
@@ -61,8 +64,8 @@ class Wordcount extends CKEditorPluginBase implements CKEditorPluginConfigurable
         'showCharCount' => !empty($settings['plugins']['wordcount']['show_char_count']) ? $settings['plugins']['wordcount']['show_char_count'] : false,
         'countSpacesAsChars' => !empty($settings['plugins']['wordcount']['count_spaces']) ? $settings['plugins']['wordcount']['count_spaces'] : false,
         'countHTML' => !empty($settings['plugins']['wordcount']['count_html']) ? $settings['plugins']['wordcount']['count_html'] : false,
-        'maxWordCount' => -1,
-        'maxCharCount' => -1
+        'maxWordCount' => !empty($settings['plugins']['wordcount']['max_words']) ? $settings['plugins']['wordcount']['max_words'] : -1,
+        'maxCharCount' => !empty($settings['plugins']['wordcount']['max_chars']) ? $settings['plugins']['wordcount']['max_chars'] : -1
       ]
     ];
   }
@@ -110,6 +113,34 @@ class Wordcount extends CKEditorPluginBase implements CKEditorPluginConfigurable
       '#default_value' => !empty($settings['plugins']['wordcount']['count_html']) ? $settings['plugins']['wordcount']['count_html'] : false,
     );
 
+    $form['max_words'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Maximum word limit'),
+      '#description' => $this->t('Enter a maximum word limit. Leave this set to -1 for unlimited.'),
+      '#default_value' => !empty($settings['plugins']['wordcount']['max_words']) ? $settings['plugins']['wordcount']['max_words'] : -1,
+      '#element_validate' => [$this, 'poop']
+    );
+
+    $form['max_chars'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Maximum character limit'),
+      '#description' => $this->t('Enter a maximum character limit. Leave this set to -1 for unlimited.'),
+      '#default_value' => !empty($settings['plugins']['wordcount']['max_chars']) ? $settings['plugins']['wordcount']['max_chars'] : -1,
+    );
+
+    $form['max_words']['#element_validate'][] = [$this, 'isNumeric'];
+    $form['max_chars']['#element_validate'][] = [$this, 'isNumeric'];
+
     return $form;
+  }
+
+  /**
+   * @param array $element
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   */
+  public function isNumeric(array $element, FormStateInterface $form_state) {
+    if (!is_numeric($element['#value'])) {
+      $form_state->setError($element, 'Value must be a number.');
+    }
   }
 }
