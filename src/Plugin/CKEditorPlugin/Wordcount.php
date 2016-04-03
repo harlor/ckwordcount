@@ -55,9 +55,15 @@ class Wordcount extends CKEditorPluginBase implements CKEditorPluginConfigurable
     $settings = $editor->getSettings();
 
     return [
-      'showParagraphs' => (bool) $settings['plugins']['wordcount']['show_paragraphs'],
-      'showWordCount' => (bool) $settings['plugins']['wordcount']['show_word_count'],
-      'showCharCount' => (bool) $settings['plugins']['wordcount']['show_char_count'],
+      'wordcount' => [
+        'showParagraphs' => !empty($settings['plugins']['wordcount']['show_paragraphs']) ? $settings['plugins']['wordcount']['show_paragraphs'] : false,
+        'showWordCount' => !empty($settings['plugins']['wordcount']['show_word_count']) ? $settings['plugins']['wordcount']['show_word_count'] : false,
+        'showCharCount' => !empty($settings['plugins']['wordcount']['show_char_count']) ? $settings['plugins']['wordcount']['show_char_count'] : false,
+        'countSpacesAsChars' => !empty($settings['plugins']['wordcount']['count_spaces']) ? $settings['plugins']['wordcount']['count_spaces'] : false,
+        'countHTML' => !empty($settings['plugins']['wordcount']['count_html']) ? $settings['plugins']['wordcount']['count_html'] : false,
+        'maxWordCount' => -1,
+        'maxCharCount' => -1
+      ]
     ];
   }
 
@@ -66,19 +72,6 @@ class Wordcount extends CKEditorPluginBase implements CKEditorPluginConfigurable
    */
   public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor) {
     $settings = $editor->getSettings();
-
-//
-//    // Whether or not you want to count Spaces as Chars
-//    countSpacesAsChars: false,
-//
-//    // Whether or not to include Html chars in the Char Count
-//    countHTML: false,
-//
-//    // Maximum allowed Word Count, -1 is default for unlimited
-//    maxWordCount: -1,
-//
-//    // Maximum allowed Char Count, -1 is default for unlimited
-//    maxCharCount: -1,
 
     $form['enable'] = array(
       '#type' => 'checkbox',
@@ -103,6 +96,18 @@ class Wordcount extends CKEditorPluginBase implements CKEditorPluginConfigurable
       '#type' => 'checkbox',
       '#title' => $this->t('Show the character count'),
       '#default_value' => !empty($settings['plugins']['wordcount']['show_char_count']) ? $settings['plugins']['wordcount']['show_char_count'] : false,
+    );
+
+    $form['count_spaces'] = array(
+      '#type' => 'checkbox',
+      '#title' => $this->t('Count spaces as characters'),
+      '#default_value' => !empty($settings['plugins']['wordcount']['count_spaces']) ? $settings['plugins']['wordcount']['count_spaces'] : false,
+    );
+
+    $form['count_html'] = array(
+      '#type' => 'checkbox',
+      '#title' => $this->t('Count HTML as characters'),
+      '#default_value' => !empty($settings['plugins']['wordcount']['count_html']) ? $settings['plugins']['wordcount']['count_html'] : false,
     );
 
     return $form;
