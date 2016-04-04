@@ -117,7 +117,6 @@ class Wordcount extends CKEditorPluginBase implements CKEditorPluginConfigurable
       '#title' => $this->t('Maximum word limit'),
       '#description' => $this->t('Enter a maximum word limit. Leave this set to -1 for unlimited.'),
       '#default_value' => !empty($settings['plugins']['wordcount']['max_words']) ? $settings['plugins']['wordcount']['max_words'] : -1,
-      '#element_validate' => [$this, 'poop']
     );
 
     $form['max_chars'] = array(
