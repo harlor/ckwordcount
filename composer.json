@@ -16,5 +16,9 @@
   "support": {
     "issues": "http://drupal.org/project/issues/ckwordcount",
     "source": "http://cgit.drupalcode.org/ckwordcount"
+  },
+  "require": {
+    "drupal/ckeditor": "*",
+    "drupal/notification": "*"
   }
 }
