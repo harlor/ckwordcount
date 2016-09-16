@@ -47,13 +47,8 @@ class Wordcount extends CKEditorPluginBase implements CKEditorPluginConfigurable
    * {@inheritdoc}
    */
   public function isEnabled(Editor $editor) {
-    $plugins = $editor->getSettings()['plugins'];
-
-    if (isset($plugins['wordcount'])) {
-      return $editor->getSettings()['plugins']['wordcount']['enable'];
-    }
-
-    return FALSE;
+    $settings = $editor->getSettings();
+    return isset($settings['plugins']['wordcount']) ? $settings['plugins']['wordcount']['enable'] : FALSE;
   }
 
   /**
