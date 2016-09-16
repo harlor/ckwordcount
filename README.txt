@@ -1,4 +1,4 @@
-CKEditor Wordcount
+CKEditor Word Count & Character Count
 ==================
 
 Description

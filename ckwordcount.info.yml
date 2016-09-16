@@ -1,4 +1,4 @@
-name: CKEditor Wordcount
+name: Word Count & Character Count
 type: module
 description: "Adds the ability to count words and/or characters to CKEditor."
 package: CKEditor
