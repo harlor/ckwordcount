@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\ckwordcount\Plugin\CKEditorPlugin\Wordcount.
- */
-
 namespace Drupal\ckwordcount\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor\CKEditorPluginBase;
