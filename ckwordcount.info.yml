@@ -5,5 +5,5 @@ package: CKEditor
 core: 8.x
 
 dependencies:
-  - ckeditor
-  - notification
+  - drupal:ckeditor
+  - notification:notification
