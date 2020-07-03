@@ -1,9 +1,12 @@
 <?php
 
 /**
+ * @file
+ * Ckeditor Word Count Module.
+ */
+
+/**
  * Implements hook_requirements().
- * @param $phase
- * @return array
  */
 function ckwordcount_requirements($phase) {
   $requirements = [];
@@ -17,7 +20,8 @@ function ckwordcount_requirements($phase) {
         'value' => t('Plugin detected'),
         'severity' => REQUIREMENT_OK,
       ];
-    } else {
+    }
+    else {
       $requirements['wordcount'] = [
         'title' => t('CKEditor Wordcount'),
         'value' => t('Plugin not detected'),
