@@ -36,7 +36,7 @@ class Wordcount extends CKEditorPluginBase implements CKEditorPluginConfigurable
    * {@inheritdoc}
    */
   public function getFile() {
-    return 'libraries/wordcount/plugin.js';
+    return file_exists(DRUPAL_ROOT . '/libraries/wordcount/plugin.js') ? 'libraries/wordcount/plugin.js' : 'libraries/ckeditor-wordcount-plugin/wordcount/plugin.js';
   }
 
   /**

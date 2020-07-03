@@ -15,7 +15,8 @@ do not lean on that for any real character limit validation.
 Installation
 ============
 1. Download the plugin from http://ckeditor.com/addon/wordcount
-2. Place the plugin in the root libraries folder (/libraries).
+2. Place the plugin in the root libraries folder
+   (/libraries/ckeditor-wordcount-plugin).
 3. Enable CKEditor Wordcount module in the Drupal admin.
 
 Each filter format will now have a config tab for this plugin.
@@ -27,7 +28,6 @@ This module requires the core CKEditor module and CKEditor Notification module.
 Uninstallation
 ============
 1. Uninstall the module from 'Administer >> Modules'.
-
 
 MAINTAINERS
 ============
