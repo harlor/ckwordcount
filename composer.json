@@ -18,7 +18,7 @@
     "source": "http://cgit.drupalcode.org/ckwordcount"
   },
   "require": {
-    "drupal/ckeditor": "*",
-    "drupal/notification": "*"
+    "drupal/notification": "^1.0",
+    "w8tcha/ckeditor-wordcount-plugin": "^1.17"
   }
 }
