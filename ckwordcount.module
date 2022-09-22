@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ */
+function ckwordcount_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id=='node_page_edit_form') {
+$form['word-count'] = ['#markup' => 'Foo<div id="word-count" class="word-count"></div>Bar'];
+  }
+}
