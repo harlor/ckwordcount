@@ -6,20 +6,22 @@
 #   configuration options.
 # cSpell:ignore simplebox demobox
 
-ckwordcount_simplebox:
+ckwordcount_wordcount:
   # Use the provider: property for this plugin to depend on another module.
 
   # Configuration that will be sent to CKEditor 5 JavaScript plugins.
   ckeditor5:
     plugins:
       - wordCount.WordCount
-    # *Additional configuration properties*
     config:
       wordCount:
-        container: word-count
-        wrapper: word-count
-        wordCountWrapper: word-count
-        wordCountContainer: word-count
+        displayWords: true
+        displayCharacters: true
+#        container: '#word-count'
+        onUpdate:
+          func:
+            name: console.log
+#            invoke: true
 
   # Configuration that will be used directly by Drupal.
   drupal:
@@ -35,16 +37,7 @@ ckwordcount_simplebox:
         label: Word count
     # If the plugin does not provide elements, set this as
     # `elements: false`
-    elements:
-      # Note that it necessary for elements to separately provide both the tag
-      # (f.e. `<h2>`) and the attribute being added to the tag
-      # (f.e. `<h2 class="simple-box-title">`).
-      - <h2>
-      - <h2 class="simple-box-title">
-      - <div>
-      - <div class="simple-box-description">
-      - <section>
-      - <section class="simple-box">
+    elements: false
     # *Additional configuration properties*
     # conditions: for setting additional criteria that must be met for the
     #   plugin to be active.
